@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MonkeyRadioStreaming.Data
+namespace MonkeyRadioStreaming.Models
 {
     public class ApplicationDbContext : IdentityDbContext
     {
