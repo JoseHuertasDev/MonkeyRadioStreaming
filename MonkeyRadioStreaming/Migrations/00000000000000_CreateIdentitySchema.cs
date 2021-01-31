@@ -27,6 +27,8 @@ namespace MonkeyRadioStreaming.Data.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>("nvarchar(max)", nullable: true),
+                    Surname = table.Column<string>("nvarchar(max)", nullable: true),
                     UserName = table.Column<string>(maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(maxLength: 256, nullable: true),
                     Email = table.Column<string>(maxLength: 256, nullable: true),
