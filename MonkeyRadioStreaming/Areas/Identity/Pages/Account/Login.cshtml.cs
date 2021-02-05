@@ -43,12 +43,12 @@ namespace MonkeyRadioStreaming.Areas.Identity.Pages.Account
 
         public class InputModel
         {
-            [Required]
-            [EmailAddress]
+            [EmailAddress(ErrorMessage = "Por favor ingrese un EMail valido")]
+            [Required(ErrorMessage = "¡El campo de EMail es obligatorio!")]
             public string Email { get; set; }
 
-            [Required]
             [DataType(DataType.Password)]
+            [Required(ErrorMessage = "¡El campo de contraseña es obligatorio!")]
             public string Password { get; set; }
 
             [Display(Name = "Recordarme")]
@@ -77,7 +77,7 @@ namespace MonkeyRadioStreaming.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
 
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        
+
             if (ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout
@@ -99,7 +99,8 @@ namespace MonkeyRadioStreaming.Areas.Identity.Pages.Account
                 }
                 else
                 {
-                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    ModelState.AddModelError(string.Empty, "Usuario contraseña incorrectos..");
+
                     return Page();
                 }
             }
