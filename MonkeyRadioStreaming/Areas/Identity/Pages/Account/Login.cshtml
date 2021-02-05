@@ -1,0 +1,54 @@
+﻿@page
+@model LoginModel
+
+@{
+    ViewData["Title"] = "Iniciar sesión";
+}
+
+<link rel="stylesheet" href="@(Url.Content("~/css/login.css"))" />
+
+<div class="row">
+    <div class="col-12">
+        <section>
+            <div class="wrapper fadeInDown">
+                <div id="formContent">
+                    <!-- Login Form -->
+                    <form id="account" method="post">
+                        <h1>@ViewData["Title"]</h1>
+
+                        <div class="form-group">
+                            <label asp-for="Input.Email" class="sr-only mt-3"></label>
+                            <input asp-for="Input.Email" id="login" type="text" lass="fadeIn" placeholder="Email" required="" autofocus=""/>
+                            <div>
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Input.Password" class="sr-only mt-3 "></label>
+                            <input asp-for="Input.Password" id="password" class="fadeIn"  type="password" placeholder="Contraseña" required="" />
+                            <div>
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label asp-for="Input.RememberMe">
+                                    <input asp-for="Input.RememberMe" />
+                                    @Html.DisplayNameFor(m => m.Input.RememberMe)
+                                </label>
+                            </div>
+                        </div>
+                        <input type="submit" class="fadeIn fourth" value="Log In">
+                    </form>
+                    <div asp-validation-summary="All" class="text-danger"></div>
+                </div>
+            </div>
+            
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
