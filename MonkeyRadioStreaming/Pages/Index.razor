@@ -1,3 +1,15 @@
 ﻿@page "/"
+@inject NavigationManager _NavigationManager
+@code{
 
-<h1>Hello, I'm Monkey Radio Streaming app!</h1>
+    [CascadingParameter] protected Task<AuthenticationState> AuthStat { get; set; }
+
+    protected async override Task OnInitializedAsync()
+    {
+        base.OnInitialized();
+        var user = (await AuthStat).User;
+        if (!user.Identity.IsAuthenticated) _NavigationManager.NavigateTo($"identity/account/login?returnUrl=/mi-radio");
+        else _NavigationManager.NavigateTo($"/mi-radio");
+        
+    }
+}
